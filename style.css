@@ -1,0 +1,450 @@
+
+body {
+    background-color: #f7f9fc; /* Light background for better readability */
+    color: #333333; /* Dark text for contrast */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Remove Streamlit's default padding */
+main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+/* Links */
+a {
+    color: #ff4b4b; /* Streamlit's signature red color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------------------
+   Headers and Titles
+------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ff4b4b;
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+h6 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ------------------------------
+   Paragraphs and Text
+------------------------------- */
+
+p, ul, ol {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #4d4d4d;
+}
+
+/* ------------------------------
+   Sidebar Styles
+------------------------------- */
+
+.css-1d391kg { /* Sidebar background */
+    background-color: #ffffff;
+    border-right: 1px solid #e6e6e6;
+}
+
+.stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4, .stSidebar h5, .stSidebar h6 {
+    color: #ff4b4b;
+}
+
+.stSidebar p, .stSidebar li, .stSidebar label {
+    color: #333333;
+    font-size: 1rem;
+}
+
+/* Sidebar buttons */
+.stSidebar .stButton>button {
+    background-color: #ff4b4b;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.stSidebar .stButton>button:hover {
+    background-color: #e03e3e;
+}
+
+/* ------------------------------
+   Buttons
+------------------------------- */
+
+.stButton>button {
+    background-color: #ff4b4b;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.stButton>button:hover {
+    background-color: #e03e3e;
+}
+
+/* ------------------------------
+   DataFrame Styles
+------------------------------- */
+
+.dataframe {
+    margin: 1rem 0;
+    border: 1px solid #e6e6e6;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.dataframe th {
+    background-color: #ff4b4b;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.dataframe td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.dataframe tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.dataframe tr:hover {
+    background-color: #e6e6e6;
+}
+
+/* ------------------------------
+   Alerts and Messages
+------------------------------- */
+
+.css-1wiflb0 { /* Success messages */
+    background-color: #dff0d8 !important;
+    color: #3c763d !important;
+    border-left: 5px solid #3c763d !important;
+    border-radius: 0.3rem;
+    padding: 1rem;
+}
+
+.css-1wiflb0 h4 {
+    color: #3c763d !important;
+}
+
+.css-k0sv6k { /* Error messages */
+    background-color: #f2dede !important;
+    color: #a94442 !important;
+    border-left: 5px solid #a94442 !important;
+    border-radius: 0.3rem;
+    padding: 1rem;
+}
+
+.css-k0sv6k h4 {
+    color: #a94442 !important;
+}
+
+.css-1xarl3l { /* Warning messages */
+    background-color: #fcf8e3 !important;
+    color: #8a6d3b !important;
+    border-left: 5px solid #8a6d3b !important;
+    border-radius: 0.3rem;
+    padding: 1rem;
+}
+
+.css-1xarl3l h4 {
+    color: #8a6d3b !important;
+}
+
+.css-1cpxqw2 { /* Info messages */
+    background-color: #d9edf7 !important;
+    color: #31708f !important;
+    border-left: 5px solid #31708f !important;
+    border-radius: 0.3rem;
+    padding: 1rem;
+}
+
+.css-1cpxqw2 h4 {
+    color: #31708f !important;
+}
+
+/* ------------------------------
+   Quiz Section Styles
+------------------------------- */
+
+/* Question styling */
+.quiz-question {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ff4b4b;
+}
+
+/* Options styling */
+.quiz-options label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Feedback messages */
+.quiz-feedback {
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+/* ------------------------------
+   Achievements and Badges
+------------------------------- */
+
+.achievement {
+    background-color: #fff8e1;
+    border-left: 5px solid #ffeb3b;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #8a6d3b;
+    border-radius: 0.3rem;
+}
+
+.achievement h4 {
+    margin-top: 0;
+    color: #8a6d3b;
+}
+
+/* Badge styling */
+.badge {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #ffeb3b;
+    color: #8a6d3b;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+/* ------------------------------
+   Code Block Styling
+------------------------------- */
+
+pre code {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    display: block;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+code {
+    background-color: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.3rem;
+    font-size: 0.95rem;
+}
+
+/* ------------------------------
+   Tables
+------------------------------- */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+table th {
+    background-color: #ff4b4b;
+    color: white;
+    font-weight: bold;
+}
+
+/* Zebra striping */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* ------------------------------
+   Input Widgets
+------------------------------- */
+
+/* Selectbox, Multiselect, and Slider */
+.stSelectbox, .stMultiSelect, .stSlider {
+    margin-bottom: 1.5rem;
+}
+
+.stTextInput>div>div>input {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+/* Slider styling */
+.css-1n6k8zn {
+    color: #ff4b4b;
+}
+
+.css-1n6k8zn .MuiSlider-thumb {
+    background-color: #ff4b4b !important;
+}
+
+.css-1n6k8zn .MuiSlider-track {
+    background-color: #ff4b4b !important;
+}
+
+/* ------------------------------
+   Footer Styling
+------------------------------- */
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e6e6e6;
+    font-size: 0.9rem;
+    color: #777777;
+}
+
+footer a {
+    color: #ff4b4b;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------------------
+   Plotly Chart Styling
+------------------------------- */
+
+/* Adjust the size of Plotly charts */
+.css-1lsmgbg.e1tzin5v3 {
+    height: auto !important;
+    max-width: 100% !important;
+}
+
+/* ------------------------------
+   Custom Scrollbar
+------------------------------- */
+
+::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888888;
+    border-radius: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
+
+/* ------------------------------
+   Balloons and Animations
+------------------------------- */
+
+/* Balloon animation for celebrations */
+@keyframes balloon-float {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-200%);
+    }
+}
+
+.balloons {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: balloon-float 5s linear infinite;
+}
+
+/* ------------------------------
+   Media Queries for Responsiveness
+------------------------------- */
+
+@media only screen and (max-width: 768px) {
+    /* Adjust padding for smaller screens */
+    main .block-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Adjust font sizes */
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+}
+
