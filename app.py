@@ -9,10 +9,8 @@ import time
 from sklearn.ensemble import IsolationForest
 from scipy.interpolate import interp1d
 
-# Set page configuration at the very top
 st.set_page_config(page_title="NTSC-BMP Interactive App", layout='wide')
 
-# Load custom CSS for styling
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -309,8 +307,6 @@ def main():
             continue
 
         st.write(f"The **{layer_name.lower()}** shows how the algorithm retains data over time.")
-
-        # Interactive plot with animations
         fig = go.Figure()
 
         for sensor in selected_sensors:
@@ -352,18 +348,12 @@ def main():
 
     st.subheader("4️⃣ Decoding Significance and Anomalies")
     st.write("Let's explore how the algorithm assigns importance to each data point.")
-
-    # Combine scores into a single DataFrame for easier plotting
     scores_df = pd.DataFrame({
         'Time in Cycles': unit_time_index,
         'Importance Score': unit_significance,
         'Unusualness Score': unit_anomalies
     })
-
-    # Melt the DataFrame
     scores_melted = scores_df.melt(id_vars=['Time in Cycles'], var_name='Score Type', value_name='Score')
-
-    # Interactive line plot with annotations
     fig_scores = px.line(
         scores_melted,
         x='Time in Cycles',
@@ -373,8 +363,6 @@ def main():
         title='Importance and Unusualness Scores Over Time',
         markers=True
     )
-
-    # Add annotations for peaks
     for score_type in ['Importance Score', 'Unusualness Score']:
         score_data = scores_melted[scores_melted['Score Type'] == score_type]
         if not score_data.empty:
@@ -424,8 +412,6 @@ def main():
     st.subheader("6️⃣ Comparing Original and Reconstructed Data")
     if reconstructed_data is not None and not reconstructed_data.empty:
         st.write("Let's visually compare the original data with the reconstructed data.")
-
-        # Create an interactive slider for time range
         min_time = int(unit_data['Time in Cycles'].min())
         max_time = int(unit_data['Time in Cycles'].max())
         time_range = st.slider(
@@ -435,28 +421,20 @@ def main():
             value=(min_time, max_time),
             step=1
         )
-
-        # Filter data based on selected time range
         mask_original = (unit_data['Time in Cycles'] >= time_range[0]) & (unit_data['Time in Cycles'] <= time_range[1])
         unit_data_filtered = unit_data[mask_original]
 
         mask_reconstructed = (reconstructed_data['Time in Cycles'] >= time_range[0]) & (
                     reconstructed_data['Time in Cycles'] <= time_range[1])
         reconstructed_data_filtered = reconstructed_data[mask_reconstructed]
-
-        # Plot per sensor with overlaid plots and residuals
         for sensor in selected_sensors:
             st.markdown(f"**Sensor: {sensor}**")
-
-            # Create subplots
             fig = make_subplots(
                 rows=2, cols=1,
                 shared_xaxes=True,
                 vertical_spacing=0.1,
                 subplot_titles=(f"Original vs. Reconstructed Data for {sensor}", f"Difference in {sensor}")
             )
-
-            # Plot original and reconstructed data
             fig.add_trace(go.Scatter(
                 x=unit_data_filtered['Time in Cycles'],
                 y=unit_data_filtered[sensor],
@@ -474,8 +452,6 @@ def main():
                 line=dict(color='firebrick', dash='dash'),
                 hovertemplate=f"Time: %{{x}}<br>Reconstructed: %{{y}}<extra></extra>"
             ), row=1, col=1)
-
-            # Calculate residuals
             common_times = np.intersect1d(unit_data_filtered['Time in Cycles'],
                                           reconstructed_data_filtered['Time in Cycles'])
             if len(common_times) == 0:
@@ -486,8 +462,6 @@ def main():
             reconstructed_common = reconstructed_data_filtered[
                 reconstructed_data_filtered['Time in Cycles'].isin(common_times)]
             residuals = original_common[sensor].values - reconstructed_common[sensor].values
-
-            # Plot residuals
             fig.add_trace(go.Scatter(
                 x=common_times,
                 y=residuals,
@@ -496,11 +470,7 @@ def main():
                 line=dict(color='green'),
                 hovertemplate=f"Time: %{{x}}<br>Residual: %{{y}}<extra></extra>"
             ), row=2, col=1)
-
-            # Add zero line to residual plot
             fig.add_hline(y=0, line_width=1, line_dash='dash', line_color='gray', row=2, col=1)
-
-            # Update layout
             fig.update_layout(
                 height=600,
                 hovermode='x unified',
@@ -538,8 +508,6 @@ def main():
         st.session_state.show_retry = False
     if 'achievements' not in st.session_state:
         st.session_state.achievements = []
-
-    # Reset function for retry
     def reset_quiz():
         st.session_state.quiz_submitted = False
         st.session_state.show_retry = False
@@ -650,6 +618,17 @@ def main():
             """)
 
             st.button("Try Again", on_click=reset_quiz)
+    st.markdown("""
+        ---
+
+        <div style='text-align: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; margin: 2rem 0;'>
+            <h2 style='color: white; margin-bottom: 1rem;'>Have Questions? We've Got Answers!</h2>
+            <p style='color: white; opacity: 0.9; margin-bottom: 1.5rem;'>Explore our comprehensive FAQ section to learn more about NTSC-BMP.</p>
+            <a href="/faq" style='display: inline-block; background: white; color: #667eea; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; transition: transform 0.2s ease;'>
+                View FAQ →
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("""
     ---
